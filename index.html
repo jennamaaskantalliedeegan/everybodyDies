@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <section class="landing">
+            <h1>DEATH</h1>
+            <div class="wrapper">
+                <p>intro content</p>
+                <form action="">
+                    <label for="gender">How do you identify?</label>
+                    <select id="gender" name="gender" required>
+                        <option value="female">female</option>
+                        <option value="male">male</option>
+                        <option value="nonBinary">non-binary</option>
+                        <option value="unspecified">gender is a spectrum</option>
+                    </select>
+                    <label for="country">Country of origin</label>
+                    <select name="country" id="country" required>
+                        <option value="canada">Canada</option>
+                        <option value="finland">Finland</option>
+                        <option value="mexico">Mexico</option>
+                    </select>
+                    <label for="date">Today's Date</label>
+                    <input type="date" id="date" name="date" required>
+                    <fieldset>
+                        <legend>How old are you?</legend>
+                        <label for="years">Years</label>
+                        <input type="number" id="years" name="years" min="0" max="100" required>
+                        <label for="months">Months</label>
+                        <input type="number" id="months" name="months" min="0" max="11" required>
+                    </fieldset>
+                    <input type="submit" value="Tell me when I'm going to die">
+                </form>
+            </div>
+        </section>
+        <section class="result">
+            <div class="timeLeft">
+
+            </div>
+            <p></p>
+            <button>Let's do it again</button>
+        </section>
+    </main>
+</body>
+</html>
