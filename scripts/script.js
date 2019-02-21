@@ -4,14 +4,26 @@ const app = {};
 //Variables - do this later
 
 //Function for event listeners (form submit and button to return to form page)
+app.eventHandler = () => {
+    $("form").on("submit", function(e) {
+        e.preventDefault();
+        const gender = $("#gender").val();
+        const country = $("#country").val();
+        const date = $("#date").val();
+        const year = $("#years").val();
+        const month = $("#months").val();
+        console.log(gender, country, date, year, month);
+        app.getResult(gender, country, date, year, month);
+    })
+}
 
 //Assign form values to varibale
 
 //make Ajax request using variables
 
-app.getResult = () => {
+app.getResult = (gender, country, date, year, month) => {
     $.ajax({
-        url: `http://api.population.io:80/1.0/life-expectancy/remaining/female/Canada/2019-02-20/28y7m5d/`,
+        url: `http://api.population.io:80/1.0/life-expectancy/remaining/${gender}/${country}/${date}/${year}y${month}m/`,
         method: "GET",
         data: "json"
     }).then((data) => {
@@ -33,7 +45,7 @@ app.getResult = () => {
 
 //Create app init!
 app.init = () => {
-    app.getResult();
+    app.eventHandler();
 };
 
 
