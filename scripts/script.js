@@ -11,6 +11,7 @@ app.eventHandler = () => {
         if(gender === "nonBinary" || gender === "unspecified") {
             gender = app.randomGender();
         }
+        //Assign form values to varibale
         const country = $("#country").val();
         const date = $("#date").val();
         const year = $("#years").val();
@@ -30,19 +31,27 @@ app.randomGender = () => {
     }
 }
 
-//Assign form values to varibale
 
 //make Ajax request using variables
 app.getResult = (gender, country, date, year, month) => {
     $.ajax({
         url: `http://api.population.io:80/1.0/life-expectancy/remaining/${gender}/${country}/${date}/${year}y${month}m/`,
         method: "GET",
-        data: "json"
+        dataType: "json"
     }).then((data) => {
         console.log(data.remaining_life_expectancy);
     });
 };
 
+app.getCountries = () => {
+    $.ajax({
+        url: "http://api.population.io:80/1.0/countries/",
+        method: "GET",
+        dataType: "json"
+    }).then((data) => {
+        app.displayCountries(data.countries);
+    });
+}
 //extract remaining life expectancy from returned data
 
 //convert data into years / months / days / hours / minutes / seconds
@@ -51,6 +60,28 @@ app.getResult = (gender, country, date, year, month) => {
 
 // reset form
 
+// app.filterCountries = (countries) => {
+//     const filteredList = countries.filter((country) => {
+//         if (country !== app.badCountries) {
+//             return country;
+//         }
+//     });
+//     app.displayCountries(filteredList);
+// }
+
+app.displayCountries = (data) => {
+    data.forEach((country) => {
+        if(country !== "Less developed regions"){
+            $(`select[name="country"]`).append(`<option value="${country}">${country}</option>`)
+
+        }
+    });
+};
+
+
+
+
+app.badCountries = ["Canada", "Finland"];
 
 
 
@@ -58,6 +89,7 @@ app.getResult = (gender, country, date, year, month) => {
 //Create app init!
 app.init = () => {
     app.eventHandler();
+    app.getCountries();
 };
 
 
