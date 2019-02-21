@@ -55,7 +55,17 @@ app.getCountries = () => {
         method: "GET",
         dataType: "json"
     }).then((data) => {
-        app.displayCountries(data.countries);
+        // app.displayCountries(data.countries);
+        console.log(data.countries);
+        app.unfiltered = data.countries;
+
+        console.log(app.unfiltered);
+
+        app.filtered = app.unfiltered.filter(function (element) {
+            return app.badCountries.indexOf(element) === -1;
+        })
+        console.log(app.filtered);
+        app.displayCountries(app.filtered);
     });
 }
 //extract remaining life expectancy from returned data
@@ -87,7 +97,7 @@ app.displayCountries = (data) => {
 
 
 
-app.badCountries = ["AFRICA", "ASIA", "Eastern Africa", "Eastern Asia", "Eastern Europe", "EUROPE", "LATIN AMERICA AND THE CARIBBEAN", "Least developed countries", "Less developed regions", "Less developed regions, excluding China", "Less developed regions, excluding least developed countries", "More developed regions", "Northern Africa", "NORTHERN AMERICA", "Northern Europe", "OCEANIA", "Other non-specified areas", "South America", "South-Central Asia", "South-Eastern Asia", "Southern Africa", "Southern Asia", "Southern Europe", "Sub-Saharan Africa", "Western Africa", "Western Asia", "Western Europe"];
+app.badCountries = ["AFRICA", "ASIA", "Australia/New Zealand", "Eastern Africa", "Eastern Asia", "Eastern Europe", "EUROPE", "LATIN AMERICA AND THE CARIBBEAN", "Least developed countries", "Less developed regions", "Less developed regions, excluding China", "Less developed regions, excluding least developed countries", "Middle Africa", "More developed regions", "Northern Africa", "NORTHERN AMERICA", "Northern Europe", "OCEANIA", "Other non-specified areas", "South America", "South-Central Asia", "South-Eastern Asia", "Southern Africa", "Southern Asia", "Southern Europe", "Sub-Saharan Africa", "Western Africa", "Western Asia", "Western Europe"];
 
 
 
