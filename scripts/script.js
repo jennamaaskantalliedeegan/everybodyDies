@@ -39,7 +39,13 @@ app.getResult = (gender, country, date, year, month) => {
         method: "GET",
         dataType: "json"
     }).then((data) => {
-        console.log(data.remaining_life_expectancy);
+        if (data.remaining_life_expectancy === undefined) {
+            alert("Sorry we don't have the data for that area of origin, please try again with another one.");
+        } else {
+            console.log(data.remaining_life_expectancy);
+        }
+    }, () => {
+        alert("Sorry we don't have the data for that area of origin, please try again with another one.");
     });
 };
 
@@ -81,7 +87,7 @@ app.displayCountries = (data) => {
 
 
 
-app.badCountries = ["Canada", "Finland"];
+app.badCountries = ["AFRICA", "ASIA", "Eastern Africa", "Eastern Asia", "Eastern Europe", "EUROPE", "LATIN AMERICA AND THE CARIBBEAN", "Least developed countries", "Less developed regions", "Less developed regions, excluding China", "Less developed regions, excluding least developed countries", "More developed regions", "Northern Africa", "NORTHERN AMERICA", "Northern Europe", "OCEANIA", "Other non-specified areas", "South America", "South-Central Asia", "South-Eastern Asia", "Southern Africa", "Southern Asia", "Southern Europe", "Sub-Saharan Africa", "Western Africa", "Western Asia", "Western Europe"];
 
 
 
