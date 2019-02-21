@@ -13,13 +13,7 @@ app.getResult = () => {
     $.ajax({
         url: `http://api.population.io:80/1.0/life-expectancy/remaining/female/Canada/2019-02-20/28y7m5d/`,
         method: "GET",
-        // data: "json",
-        "async": true,
-        "crossDomain": true,
-        "headers": {
-            "cache-control": "no-cache",
-            "Postman-Token": "badd299e-54df-4535-82ce-2da3f2207eb2"
-        }
+        data: "json"
     }).then((data) => {
         console.log(data.remaining_life_expectancy);
     });
