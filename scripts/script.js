@@ -1,6 +1,13 @@
 //Namespacing our app
 const app = {};
 
+app.timeValues = {
+    year: 0,
+    month: 0,
+    hour: 0,
+    minute: 0,
+    second:0
+}
 //Variables - do this later
 
 //Function for event listeners (form submit and button to return to form page)
@@ -33,6 +40,7 @@ app.randomGender = () => {
 
 
 //make Ajax request using variables
+//extract remaining life expectancy from returned data
 app.getResult = (gender, country, date, year, month) => {
     $.ajax({
         url: `http://api.population.io:80/1.0/life-expectancy/remaining/${gender}/${country}/${date}/${year}y${month}m/`,
@@ -42,12 +50,42 @@ app.getResult = (gender, country, date, year, month) => {
         if (data.remaining_life_expectancy === undefined) {
             alert("Sorry we don't have the data for that area of origin, please try again with another one.");
         } else {
-            console.log(data.remaining_life_expectancy);
+            app.getCountDownValues(data.remaining_life_expectancy);
         }
     }, () => {
         alert("Sorry we don't have the data for that area of origin, please try again with another one.");
     });
 };
+
+//convert data into years / months / days / hours / minutes / seconds
+app.getCountDownValues = (lifeExpectancy) => {
+    app.timeValues.year = app.determineNumber(lifeExpectancy, 1);
+    let decimal = lifeExpectancy - app.timeValues.year;
+    app.timeValues.month = app.determineNumber(decimal, 12);
+    decimal = (decimal * 12) - app.timeValues.month;
+    app.timeValues.day = app.determineNumber(decimal, 30);
+    decimal = (decimal * 30) - app.timeValues.day;
+    app.timeValues.hour = app.determineNumber(decimal, 24)
+    decimal = (decimal * 24) - app.timeValues.hour;
+    app.timeValues.minute = app.determineNumber(decimal, 60);
+    decimal = (decimal * 60) - app.timeValues.minute;
+    app.timeValues.second = app.determineNumber(decimal, 60);
+    app.displayNumbers();
+}
+
+//display countdown on page
+app.displayNumbers = () => {
+    for(let unit in app.timeValues){
+        $(`.${unit}`).text(app.timeValues[unit]);
+    }
+}
+
+
+app.determineNumber = (number, constant) => { 
+    wholeNumber = Math.floor(number * constant);
+    return wholeNumber;
+}
+
 
 app.getCountries = () => {
     $.ajax({
@@ -68,11 +106,8 @@ app.getCountries = () => {
         app.displayCountries(app.filtered);
     });
 }
-//extract remaining life expectancy from returned data
 
-//convert data into years / months / days / hours / minutes / seconds
 
-//display data on page
 
 // reset form
 
