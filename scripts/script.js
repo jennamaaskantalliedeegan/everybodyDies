@@ -18,6 +18,7 @@ app.eventHandler = () => {
         if(gender === "nonBinary" || gender === "unspecified") {
             gender = app.randomGender();
         }
+        
         //Assign form values to varibale
         const country = $("#country").val();
         const date = $("#date").val();
@@ -31,9 +32,11 @@ app.eventHandler = () => {
     });
 
     $("button").on("click", function(){
+        $("form")[0].reset();
         $("HTML, BODY").animate({ scrollTop: 0 }, 3000);
         setTimeout(() => {
             $("section.result").hide();
+            clearInterval(app.interval);
         }, 3000);
     })
 }
@@ -81,6 +84,9 @@ app.getCountDownValues = (lifeExpectancy) => {
     decimal = (decimal * 60) - app.timeValues.minute;
     app.timeValues.second = app.determineNumber(decimal, 60);
     app.displayNumbers();
+    setTimeout(() => {
+        app.startCountDown();
+    }, 4500);
 }
 
 //display countdown on page
@@ -88,6 +94,38 @@ app.displayNumbers = () => {
     for(let unit in app.timeValues){
         $(`.${unit}`).text(app.timeValues[unit]);
     }
+}
+
+// countdown
+app.startCountDown = () => {
+    app.interval = setInterval(() => {
+        app.displayNumbers();
+        app.timeValues.second--;
+        if (app.timeValues.second === -1){
+            app.timeValues.second = 59;
+            app.timeValues.minute--;
+            if (app.timeValues.minute === -1){
+                app.timeValues.minute = 59;
+                app.timeValues.hour--;
+            }
+            if (app.timeValues.hour === -1) {
+                app.timeValues.hour = 23;
+                app.timeValues.day--;
+            }
+            if (app.timeValues.day === -1) {
+                app.timeValues.day = 59;
+                app.timeValues.month--;
+            }
+            if (app.timeValues.month === -1) {
+                app.timeValues.month = 59;
+                app.timeValues.year--;
+            }  
+            if (app.timeValues.second === 0 && app.timeValues.minute === 0 && app.timeValues.hour === 0 && app.timeValues.day === 0 && app.timeValues.month === 0 && app.timeValues.year === 0) {
+                clearInterval(interval);
+            }
+        }
+        app.displayNumbers();
+    }, 1000)
 }
 
 
