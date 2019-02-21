@@ -25,7 +25,17 @@ app.eventHandler = () => {
         const month = $("#months").val();
         console.log(gender, country, date, year, month);
         app.getResult(gender, country, date, year, month);
+        $("section.result").show();
+        app.position = $("section.result").offset().top;
+        $("HTML, BODY").animate({scrollTop: app.position}, 3000);
     });
+
+    $("button").on("click", function(){
+        $("HTML, BODY").animate({ scrollTop: 0 }, 3000);
+        setTimeout(() => {
+            $("section.result").hide();
+        }, 3000);
+    })
 }
 
 // function to randomly generate gender
