@@ -40,17 +40,16 @@ app.eventHandler = () => {
         console.log(Date.parse(birthday));
         const age = (Date.parse(todayDate) - Date.parse(birthday)) / (60 * 60 * 24 * 1000);
         // get API results
+        clearInterval(app.interval);
         app.getResult(gender, country, todayDate, age);
-
-       
+        $("form")[0].reset();
     });
-
+    
     $("button").on("click", function () {
         $("form")[0].reset();
         $("HTML, BODY").animate({ scrollTop: 0 }, 3000);
         setTimeout(() => {
             $("section.result").hide();
-            clearInterval(app.interval);
         }, 3000);
     })
 }
