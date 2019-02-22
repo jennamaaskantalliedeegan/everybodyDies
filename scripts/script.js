@@ -42,7 +42,6 @@ app.eventHandler = () => {
         // get API results
         clearInterval(app.interval);
         app.getResult(gender, country, todayDate, age);
-        $("form")[0].reset();
     });
     
     $("button").on("click", function () {
@@ -105,15 +104,24 @@ app.getCountDownValues = (lifeExpectancy) => {
 app.startCountDown = (lifeExpectancy) => {
     // show initial remaining life expectancy
     app.getCountDownValues(lifeExpectancy);
-    app.timeValues.second = app.timeValues.second - 5;
-    app.displayNumbers();
-    //start countdown after 5 seconds, and reprint minutes, hours, days, months, and years every second
-    setTimeout(() => {
+    
+    if (app.timeValues.second >=5){
+        app.timeValues.second = app.timeValues.second - 5;
+        app.displayNumbers();
+    
+        //start countdown after 5 seconds, and reprint minutes, hours, days, months, and years every second
+        setTimeout(() => {
+            app.interval = setInterval(function () {
+                app.getCountDownValues(lifeExpectancy);
+                app.displayNumbers();
+            }, 1000);
+        }, 5000);
+    } else {
         app.interval = setInterval(function () {
             app.getCountDownValues(lifeExpectancy);
             app.displayNumbers();
         }, 1000);
-    }, 5000);
+    }
 }
 
 
