@@ -42,10 +42,7 @@ app.eventHandler = () => {
         // get API results
         app.getResult(gender, country, todayDate, age);
 
-        // show results section and scroll smoothly down the page
-        $("section.result").show();
-        app.position = $("section.result").offset().top;
-        $("HTML, BODY").animate({ scrollTop: app.position }, 3000);
+       
     });
 
     $("button").on("click", function () {
@@ -78,14 +75,18 @@ app.getResult = (gender, country, date, age) => {
         dataType: "json"
     }).then((data) => {
         if (data.remaining_life_expectancy === undefined) {
-            alert("Sorry we don't have the data for that area of origin, please try again with another one.");
+            alert("Sorry we don't have the data for those parameters. Ages over 100 are not supported by this app.");
         } else {
             // convert ramaining life expectancy into milliseconds and add it today todays date and time(also converted to milliseconds)
             lifeExpectancyMilliseconds = (data.remaining_life_expectancy) * 365.25 * 24 * 60 * 60 * 1000 + Date.parse(new Date());
             app.startCountDown(lifeExpectancyMilliseconds);
+            // show results section and scroll smoothly down the page
+            $("section.result").show();
+            app.position = $("section.result").offset().top;
+            $("HTML, BODY").animate({ scrollTop: app.position }, 3000);
         }
     }, () => {
-        alert("that didnt work. Sorry we don't have the data for that area of origin, please try again with another one.");
+        alert("Sorry we don't have the data for those parameters. Ages over 100 are not supported by this app.");
     });
 };
 
@@ -138,7 +139,7 @@ app.getCountries = () => {
         console.log(app.unfiltered);
 
         app.filtered = app.unfiltered.filter(function (element) {
-            return app.badCountries.indexOf(element) === -1;
+            return app.unsupportedRegions.indexOf(element) === -1;
         })
         console.log(app.filtered);
         app.displayCountries(app.filtered);
@@ -157,7 +158,7 @@ app.displayCountries = (data) => {
 
 
 
-app.badCountries = ["AFRICA", "ASIA", "Australia/New Zealand", "Eastern Africa", "Eastern Asia", "Eastern Europe", "EUROPE", "LATIN AMERICA AND THE CARIBBEAN", "Least developed countries", "Less developed regions", "Less developed regions, excluding China", "Less developed regions, excluding least developed countries", "Middle Africa", "More developed regions", "Northern Africa", "NORTHERN AMERICA", "Northern Europe", "OCEANIA", "Other non-specified areas", "South America", "South-Central Asia", "South-Eastern Asia", "Southern Africa", "Southern Asia", "Southern Europe", "Sub-Saharan Africa", "Western Africa", "Western Asia", "Western Europe"];
+app.unsupportedRegions = ["AFRICA", "ASIA", "Australia/New Zealand", "Eastern Africa", "Eastern Asia", "Eastern Europe", "EUROPE", "LATIN AMERICA AND THE CARIBBEAN", "Least developed countries", "Less developed regions", "Less developed regions, excluding China", "Less developed regions, excluding least developed countries", "Middle Africa", "More developed regions", "Northern Africa", "NORTHERN AMERICA", "Northern Europe", "OCEANIA", "Other non-specified areas", "South America", "South-Central Asia", "South-Eastern Asia", "Southern Africa", "Southern Asia", "Southern Europe", "Sub-Saharan Africa", "Western Africa", "Western Asia", "Western Europe"];
 
 
 
