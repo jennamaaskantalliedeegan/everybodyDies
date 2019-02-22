@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,11 @@
     <title>Document</title>
 
     <style>
-
         * {
             margin: 0;
             padding: 0;
         }
+
         section {
             height: 100vh;
         }
@@ -20,13 +21,14 @@
             background: #0055ff;
         }
 
-        section.result{
+        section.result {
             display: none;
             background: #884444;
         }
     </style>
-    
+
 </head>
+
 <body>
     <main>
         <section class="landing">
@@ -45,14 +47,10 @@
                     <label for="country">Country of origin</label>
                     <select name="country" id="country" required>
                     </select>
-                    <label for="date">Today's Date</label>
-                    <input type="date" id="date" name="date" required>
                     <fieldset>
-                        <legend>How old are you?</legend>
-                        <label for="years">Years</label>
-                        <input type="number" id="years" name="years" min="0" max="100" required>
-                        <label for="months">Months</label>
-                        <input type="number" id="months" name="months" min="0" max="11" required>
+                        <legend>What is your Birthday</legend>
+                        <label for="birthday">birthday</label>
+                        <input type="date" id="birthday" name="birthday">
                     </fieldset>
                     <input type="submit" value="Tell me when I'm going to die">
                 </form>
@@ -93,7 +91,9 @@
         </section>
     </main>
 
-    <script src='https://code.jquery.com/jquery-3.2.1.min.js' integrity='sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4='crossorigin='anonymous'></script>
+    <script src='https://code.jquery.com/jquery-3.2.1.min.js'
+        integrity='sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=' crossorigin='anonymous'></script>
     <script src="scripts/script.js"></script>
 </body>
+
 </html>

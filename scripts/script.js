@@ -6,32 +6,49 @@ app.timeValues = {
     month: 0,
     hour: 0,
     minute: 0,
-    second:0
+    second: 0
 }
 //Variables - do this later
 
 //Function for event listeners (form submit and button to return to form page)
 app.eventHandler = () => {
-    $("form").on("submit", function(e) {
+    $("form").on("submit", function (e) {
         e.preventDefault();
         let gender = $("#gender").val();
-        if(gender === "nonBinary" || gender === "unspecified") {
+        if (gender === "nonBinary" || gender === "unspecified") {
             gender = app.randomGender();
         }
-        
         //Assign form values to varibale
         const country = $("#country").val();
-        const date = $("#date").val();
-        const year = $("#years").val();
-        const month = $("#months").val();
-        console.log(gender, country, date, year, month);
-        app.getResult(gender, country, date, year, month);
+
+        // get todays date and convert into yyyy-mm-dd format
+        const today = new Date()
+        const todayYear = today.getFullYear();
+        const todayMonth = (today.getMonth()) + 1;
+        const todayDay = today.getDate();
+        if (todayMonth.length < 2) {
+            todayMonth = "0" + todayMonth;
+        }
+        if (todayDay.length < 2) {
+            todayDay = "0" + todayDay;
+        }
+        todayDate = [todayYear, todayMonth, todayDay].join("-");
+
+        const birthday = $("#birthday").val();
+        console.log(birthday);
+        // convert todays date and the birthdate to milliseconds and calculate the difference, which gives us age in milliseconds. Convert age from milliseconds to days.
+        console.log(Date.parse(birthday));
+        const age = (Date.parse(todayDate) - Date.parse(birthday)) / (60 * 60 * 24 * 1000);
+        // get API results
+        app.getResult(gender, country, todayDate, age);
+
+        // show results section and scroll smoothly down the page
         $("section.result").show();
         app.position = $("section.result").offset().top;
-        $("HTML, BODY").animate({scrollTop: app.position}, 3000);
+        $("HTML, BODY").animate({ scrollTop: app.position }, 3000);
     });
 
-    $("button").on("click", function(){
+    $("button").on("click", function () {
         $("form")[0].reset();
         $("HTML, BODY").animate({ scrollTop: 0 }, 3000);
         setTimeout(() => {
@@ -43,8 +60,8 @@ app.eventHandler = () => {
 
 // function to randomly generate gender
 app.randomGender = () => {
-    number = Math.floor(Math.random()*2 + 1);
-    if( number === 1){
+    number = Math.floor(Math.random() * 2 + 1);
+    if (number === 1) {
         return "female";
     } else {
         return "male";
@@ -54,85 +71,59 @@ app.randomGender = () => {
 
 //make Ajax request using variables
 //extract remaining life expectancy from returned data
-app.getResult = (gender, country, date, year, month) => {
+app.getResult = (gender, country, date, age) => {
     $.ajax({
-        url: `http://api.population.io:80/1.0/life-expectancy/remaining/${gender}/${country}/${date}/${year}y${month}m/`,
+        url: `http://api.population.io:80/1.0/life-expectancy/remaining/${gender}/${country}/${date}/${age}d/`,
         method: "GET",
         dataType: "json"
     }).then((data) => {
         if (data.remaining_life_expectancy === undefined) {
             alert("Sorry we don't have the data for that area of origin, please try again with another one.");
         } else {
-            app.getCountDownValues(data.remaining_life_expectancy);
+            // convert ramaining life expectancy into milliseconds and add it today todays date and time(also converted to milliseconds)
+            lifeExpectancyMilliseconds = (data.remaining_life_expectancy) * 365.25 * 24 * 60 * 60 * 1000 + Date.parse(new Date());
+            app.startCountDown(lifeExpectancyMilliseconds);
         }
     }, () => {
-        alert("Sorry we don't have the data for that area of origin, please try again with another one.");
+        alert("that didnt work. Sorry we don't have the data for that area of origin, please try again with another one.");
     });
 };
 
-//convert data into years / months / days / hours / minutes / seconds
+
 app.getCountDownValues = (lifeExpectancy) => {
-    app.timeValues.year = app.determineNumber(lifeExpectancy, 1);
-    let decimal = lifeExpectancy - app.timeValues.year;
-    app.timeValues.month = app.determineNumber(decimal, 12);
-    decimal = (decimal * 12) - app.timeValues.month;
-    app.timeValues.day = app.determineNumber(decimal, 30);
-    decimal = (decimal * 30) - app.timeValues.day;
-    app.timeValues.hour = app.determineNumber(decimal, 24)
-    decimal = (decimal * 24) - app.timeValues.hour;
-    app.timeValues.minute = app.determineNumber(decimal, 60);
-    decimal = (decimal * 60) - app.timeValues.minute;
-    app.timeValues.second = app.determineNumber(decimal, 60);
-    app.displayNumbers();
-    setTimeout(() => {
-        app.startCountDown();
-    }, 4500);
+    // find the difference between life expectancy in milliseconds and the instant date and time converted to milliseconds (this value will change by a second everytime the function is called)
+    difference = lifeExpectancy - Date.parse(new Date());
+    // convert this difference into seconds, minutes, hours, days, months, and years
+    app.timeValues.second = Math.floor((difference / 1000) % 60);
+    app.timeValues.minute = Math.floor((difference / 1000 / 60) % 60);
+    app.timeValues.hour = Math.floor((difference / (1000 * 60 * 60)) % 24);
+    app.timeValues.day = Math.floor((difference / (1000 * 60 * 60 * 24)) % 30);
+    app.timeValues.month = Math.floor((difference / (1000 * 60 * 60 * 24 * 30)) % 12);
+    app.timeValues.year = Math.floor(difference / (1000 * 60 * 60 * 24 * 30 * 12));
 }
+
+app.startCountDown = (lifeExpectancy) => {
+    // show initial remaining life expectancy
+    app.getCountDownValues(lifeExpectancy);
+    app.timeValues.second = app.timeValues.second - 5;
+    app.displayNumbers();
+    //start countdown after 5 seconds, and reprint minutes, hours, days, months, and years every second
+    setTimeout(() => {
+        app.interval = setInterval(function () {
+            app.getCountDownValues(lifeExpectancy);
+            app.displayNumbers();
+        }, 1000);
+    }, 5000);
+}
+
 
 //display countdown on page
 app.displayNumbers = () => {
-    for(let unit in app.timeValues){
+    for (let unit in app.timeValues) {
         $(`.${unit}`).text(app.timeValues[unit]);
     }
 }
 
-// countdown
-app.startCountDown = () => {
-    app.interval = setInterval(() => {
-        app.displayNumbers();
-        app.timeValues.second--;
-        if (app.timeValues.second === -1){
-            app.timeValues.second = 59;
-            app.timeValues.minute--;
-            if (app.timeValues.minute === -1){
-                app.timeValues.minute = 59;
-                app.timeValues.hour--;
-            }
-            if (app.timeValues.hour === -1) {
-                app.timeValues.hour = 23;
-                app.timeValues.day--;
-            }
-            if (app.timeValues.day === -1) {
-                app.timeValues.day = 59;
-                app.timeValues.month--;
-            }
-            if (app.timeValues.month === -1) {
-                app.timeValues.month = 59;
-                app.timeValues.year--;
-            }  
-            if (app.timeValues.second === 0 && app.timeValues.minute === 0 && app.timeValues.hour === 0 && app.timeValues.day === 0 && app.timeValues.month === 0 && app.timeValues.year === 0) {
-                clearInterval(interval);
-            }
-        }
-        app.displayNumbers();
-    }, 1000)
-}
-
-
-app.determineNumber = (number, constant) => { 
-    wholeNumber = Math.floor(number * constant);
-    return wholeNumber;
-}
 
 
 app.getCountries = () => {
@@ -141,7 +132,6 @@ app.getCountries = () => {
         method: "GET",
         dataType: "json"
     }).then((data) => {
-        // app.displayCountries(data.countries);
         console.log(data.countries);
         app.unfiltered = data.countries;
 
@@ -155,22 +145,9 @@ app.getCountries = () => {
     });
 }
 
-
-
-// reset form
-
-// app.filterCountries = (countries) => {
-//     const filteredList = countries.filter((country) => {
-//         if (country !== app.badCountries) {
-//             return country;
-//         }
-//     });
-//     app.displayCountries(filteredList);
-// }
-
 app.displayCountries = (data) => {
     data.forEach((country) => {
-        if(country !== "Less developed regions"){
+        if (country !== "Less developed regions") {
             $(`select[name="country"]`).append(`<option value="${country}">${country}</option>`)
 
         }
@@ -194,6 +171,6 @@ app.init = () => {
 
 
 //Document Ready
-$(function(){
+$(function () {
     app.init();
 });
