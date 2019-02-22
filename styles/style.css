@@ -146,7 +146,8 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   overflow: hidden; }
 
 section {
-  height: 100vh; }
+  height: 100vh;
+  border: 1px solid yellowgreen; }
 
 section.landing {
   background: #0055ff; }
