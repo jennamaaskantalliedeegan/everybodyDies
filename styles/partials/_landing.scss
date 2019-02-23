@@ -1,0 +1,92 @@
+h1 {
+    @include heading($landingText);
+    margin-top: 0;
+}
+
+p {
+    font-family: $bodyFont;
+    color: $landingText;
+}
+
+.flower {
+    position: relative;
+}
+
+.flowerGraphic{
+    width: 80%;
+}
+
+.speechBubble {
+    position: absolute;
+    top: -60px;
+    right: -70px;
+    width: 200px;
+}
+
+.landing {
+    background: url(../assets/sky2.png);
+    background-size: cover;
+    background-position: center bottom;
+    overflow: hidden;
+}
+
+.landingContent {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    max-width: 1100px;
+    margin: 50px auto 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    font-family: $bodyFont;
+    margin-top: 50px;
+}
+
+select[name="country"] {
+    @include selectBackground(url(../assets/countriesBW.png));
+}
+
+select[name="country"]:focus, select[name="country"]:hover  {
+     @include selectBackground(url(../assets/countriesColor.png));
+}
+
+select[name="gender"] {
+    @include selectBackground((url(../assets/userBW.png)));
+}
+
+select[name="gender"]:focus, select[name="gender"]:hover  {
+     @include selectBackground(url(../assets/userColor.png));
+}
+
+select, input[type="date"] {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    border: none;
+    color: $landingText;
+    border-radius: 30px;
+    padding: 10px 40px;
+    margin: 5px 0;
+}
+
+input[type="date"] {
+    @include dateBackground(url(../assets/birthdayBW.png));
+}
+
+input[type="date"]:focus, input[type="date"]:hover {
+    @include dateBackground(url(../assets/birthdayColor.png));
+}
+
+input[type="submit"] {
+    @include buttonStyle(#d0f3ff, white, black, 1rem);
+    &:hover {
+        @include buttonHover(white);
+    }
+}
+
+label, input {
+    margin: 5px 0;
+}

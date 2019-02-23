@@ -14,6 +14,7 @@ app.timeValues = {
 app.eventHandler = () => {
     $("form").on("submit", function (e) {
         e.preventDefault();
+        $(".landing").css("overflow", "visible");
         let gender = $("#gender").val();
         if (gender === "nonBinary" || gender === "unspecified") {
             gender = app.randomGender();
@@ -45,6 +46,7 @@ app.eventHandler = () => {
     });
     
     $("button").on("click", function () {
+        $(".landing").css("overflow", "hidden");
         $("form")[0].reset();
         $("HTML, BODY").animate({ scrollTop: 0 }, 3000);
         setTimeout(() => {
@@ -79,7 +81,7 @@ app.getResult = (gender, country, date, age) => {
             lifeExpectancyMilliseconds = (data.remaining_life_expectancy) * 365.25 * 24 * 60 * 60 * 1000 + Date.parse(new Date());
             app.startCountDown(lifeExpectancyMilliseconds);
             // show results section and scroll smoothly down the page
-            $("section.result").show();
+            $("section.result").css("display", "flex");
             app.position = $("section.result").offset().top;
             $("HTML, BODY").animate({ scrollTop: app.position }, 3000);
         }
