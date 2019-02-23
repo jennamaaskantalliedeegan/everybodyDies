@@ -1,20 +1,57 @@
+$headingFont: "Shrikhand", cursive;
+$bodyFont: "Raleway", sans-serif;
+$landingText: #102542;
+$resultText: #f9dec9;
+$resultButtonShaddow: #ddbda4;
+
+@mixin selectBackground($image) {
+    background: url(../assets/downIcon.png), $image, rgb(160, 217, 236);;
+    background-size: 25px;
+    background-repeat: no-repeat;
+    background-position: 95% center, 3% center;
+}
+
+@mixin dateBackground($image) {
+    background: $image;
+    background-size: 25px;
+    background-repeat: no-repeat;
+    background-position: 3% center;
+}
+
+@mixin buttonStyle($color1, $color2, $color3, $fontSize) {
+    background: $color1;
+    box-shadow: 0 6px $color2; 
+    padding: 20px 50px;
+    border: none;
+    font-family: $bodyFont;
+    color: $color3;
+    border-radius: 50px;
+    position: relative;
+    font-size: $fontSize;
+    transition: top .5s;
+}
+
+@mixin buttonHover ($color) {
+    top: 2px;
+    box-shadow: 0 4px $color;
+}
+
+@mixin heading ($color) {
+    font-size: 5rem;
+    font-family: $headingFont;
+    text-align: center;
+    margin-bottom: 0;
+    color: $color;
+}
+
 section {
     height: 100vh;
-    border: 1px solid yellowgreen
 }
 
 html {
     font-size: 125%;
 }
-h1 {
-    font-size: 5rem;
-    color: dodgerblue;
-}
-section.landing {
-    background: #0055ff;
-}
 
 section.result {
     display: none;
-    background: #884444;
 }

@@ -5,22 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Everybody Dies</title>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Lato|Raleway:400,700|Shrikhand" rel="stylesheet">
     <link rel="stylesheet" href="styles/style.css">
 </head>
 
 <body>
     <main>
+        <!-- Landing section starts -->
         <section class="landing">
             <h1>Everybody Dies</h1>
             <div class="landingContent">
                 <div class="flower">
-                    <img src="" alt="">
+                    <img class="flowerGraphic" src="assets/flowerSpeckle.png" alt="">
+                    <img class="speechBubble" src="assets/speechBubbleNavy02.png" alt="">
                     <!-- This P tag will probably be an image -->
-                    <p>Even you!</p> 
+                    <!-- <p>Even you!</p>  -->
                 </div>
                 <div class="info">
-                    <p>Fill out the form below to see when death is coming for you.</p>
                     <form action="">
                         <label for="gender">How do you identify?</label>
                         <select id="gender" name="gender" required>
@@ -36,9 +38,10 @@
                         <input type="date" id="birthday" name="birthday" required>  
                         <input type="submit" value="Tell me when I'm going to die">
                     </form>
-                </div>
-            </div>
-        </section>
+                </div> <!-- enf of info -->
+            </div> <!-- end of landingContent -->
+        </section> <!-- end of landing -->
+        <!-- result section starts -->
         <section class="result">
             <div class="resultContent">
                 <div class="wrapper">
@@ -69,18 +72,19 @@
                                 <p class="second"></p>
                                 <p>Seconds</p>
                             </li>
-                        </ul>
-                    </div>
-                    <p>Death is but the next great adventure!</p>
-                    <button>Let's do it again</button>
-                </div>
-            </div>
-            <div class="footer">
+                        </ul> 
+                    </div> <!-- end of timeleft -->
+                    <p>Remember, death is but the next great adventure!</p>
+                    <button>Let's do it again!</button>
+                </div> <!-- end of wrapper -->
+            </div> <!-- end of result content -->
+            <footer>
                 <p>Made with ☠️ by Jenna Maaskant and Allie Deegan using the <a href="http://api.population.io" target="_blank">World Population API.</a></p>
-            </div>
-        </section>
-    </main>
+            </footer><!-- end of footer -->
+        </section> <!-- end of result section -->
+    </main> <!-- end of main -->
 
+    <!-- javascript and plugins -->
     <script src='https://code.jquery.com/jquery-3.2.1.min.js'
         integrity='sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=' crossorigin='anonymous'></script>
     <script src="scripts/script.js"></script>

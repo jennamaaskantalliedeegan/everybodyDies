@@ -1,0 +1,67 @@
+h2 {
+    @include heading(#f9dec9);
+    z-index: 10;
+}
+
+.result {
+    background: url(../assets/ground2.png);
+    background-size: cover;
+    background-position: center top;
+    flex-direction: column;
+    justify-content: space-between;
+    p {
+        font-family: $bodyFont;
+    }
+}
+
+.result .wrapper {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.timeLeft {
+    width: 100%;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+}
+
+.result p {
+    text-align: center;
+    color: $resultText;
+}
+
+ul p:nth-of-type(1) {
+    font-size: 6rem;
+    margin: 50px 0 0;
+    font-family: $bodyFont;
+    font-weight: 700;
+    width: 156px;
+}
+
+ul p:nth-of-type(2) {
+    margin-top: 0;
+    text-transform: uppercase;
+}
+
+button {
+    @include buttonStyle($resultText, $resultButtonShaddow, #4e342e, 1rem);
+    &:hover {
+        @include buttonHover($resultButtonShaddow);
+    }
+}
+
+footer p {
+    margin-bottom: 5px;
+    a {
+        color: #f9dec9; 
+    }
+}
+

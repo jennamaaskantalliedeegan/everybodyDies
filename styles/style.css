@@ -146,19 +146,218 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   overflow: hidden; }
 
 section {
-  height: 100vh;
-  border: 1px solid yellowgreen; }
+  height: 100vh; }
 
 html {
   font-size: 125%; }
 
+section.result {
+  display: none; }
+
 h1 {
   font-size: 5rem;
-  color: dodgerblue; }
+  font-family: "Shrikhand", cursive;
+  text-align: center;
+  margin-bottom: 0;
+  color: #102542;
+  margin-top: 0; }
 
-section.landing {
-  background: #0055ff; }
+p {
+  font-family: "Raleway", sans-serif;
+  color: #102542; }
 
-section.result {
-  display: none;
-  background: #884444; }
+.flower {
+  position: relative; }
+
+.flowerGraphic {
+  width: 80%; }
+
+.speechBubble {
+  position: absolute;
+  top: -60px;
+  right: -70px;
+  width: 200px; }
+
+.landing {
+  background: url(../assets/sky2.png);
+  background-size: cover;
+  background-position: center bottom;
+  overflow: hidden; }
+
+.landingContent {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 80%;
+  max-width: 1100px;
+  margin: 50px auto 0; }
+
+form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  font-family: "Raleway", sans-serif;
+  margin-top: 50px; }
+
+select[name="country"] {
+  background: url(../assets/downIcon.png), url(../assets/countriesBW.png), #a0d9ec;
+  background-size: 25px;
+  background-repeat: no-repeat;
+  background-position: 95% center, 3% center; }
+
+select[name="country"]:focus, select[name="country"]:hover {
+  background: url(../assets/downIcon.png), url(../assets/countriesColor.png), #a0d9ec;
+  background-size: 25px;
+  background-repeat: no-repeat;
+  background-position: 95% center, 3% center; }
+
+select[name="gender"] {
+  background: url(../assets/downIcon.png), url(../assets/userBW.png), #a0d9ec;
+  background-size: 25px;
+  background-repeat: no-repeat;
+  background-position: 95% center, 3% center; }
+
+select[name="gender"]:focus, select[name="gender"]:hover {
+  background: url(../assets/downIcon.png), url(../assets/userColor.png), #a0d9ec;
+  background-size: 25px;
+  background-repeat: no-repeat;
+  background-position: 95% center, 3% center; }
+
+select, input[type="date"] {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  color: #102542;
+  border-radius: 30px;
+  padding: 10px 40px;
+  margin: 5px 0; }
+
+input[type="date"] {
+  background: url(../assets/birthdayBW.png);
+  background-size: 25px;
+  background-repeat: no-repeat;
+  background-position: 3% center; }
+
+input[type="date"]:focus, input[type="date"]:hover {
+  background: url(../assets/birthdayColor.png);
+  background-size: 25px;
+  background-repeat: no-repeat;
+  background-position: 3% center; }
+
+input[type="submit"] {
+  background: #d0f3ff;
+  -webkit-box-shadow: 0 6px white;
+  box-shadow: 0 6px white;
+  padding: 20px 50px;
+  border: none;
+  font-family: "Raleway", sans-serif;
+  color: black;
+  border-radius: 50px;
+  position: relative;
+  font-size: 1rem;
+  -webkit-transition: top .5s;
+  -o-transition: top .5s;
+  transition: top .5s; }
+  input[type="submit"]:hover {
+    top: 2px;
+    -webkit-box-shadow: 0 4px white;
+    box-shadow: 0 4px white; }
+
+label, input {
+  margin: 5px 0; }
+
+h2 {
+  font-size: 5rem;
+  font-family: "Shrikhand", cursive;
+  text-align: center;
+  margin-bottom: 0;
+  color: #f9dec9;
+  z-index: 10; }
+
+.result {
+  background: url(../assets/ground2.png);
+  background-size: cover;
+  background-position: center top;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between; }
+  .result p {
+    font-family: "Raleway", sans-serif; }
+
+.result .wrapper {
+  width: 80%;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+
+.timeLeft {
+  width: 100%; }
+
+ul {
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 0; }
+
+.result p {
+  text-align: center;
+  color: #f9dec9; }
+
+ul p:nth-of-type(1) {
+  font-size: 6rem;
+  margin: 50px 0 0;
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  width: 156px; }
+
+ul p:nth-of-type(2) {
+  margin-top: 0;
+  text-transform: uppercase; }
+
+button {
+  background: #f9dec9;
+  -webkit-box-shadow: 0 6px #ddbda4;
+  box-shadow: 0 6px #ddbda4;
+  padding: 20px 50px;
+  border: none;
+  font-family: "Raleway", sans-serif;
+  color: #4e342e;
+  border-radius: 50px;
+  position: relative;
+  font-size: 1rem;
+  -webkit-transition: top .5s;
+  -o-transition: top .5s;
+  transition: top .5s; }
+  button:hover {
+    top: 2px;
+    -webkit-box-shadow: 0 4px #ddbda4;
+    box-shadow: 0 4px #ddbda4; }
+
+footer p {
+  margin-bottom: 5px; }
+  footer p a {
+    color: #f9dec9; }
