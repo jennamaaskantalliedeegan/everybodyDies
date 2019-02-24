@@ -1,9 +1,11 @@
+// VARIABLES 
 $headingFont: "Shrikhand", cursive;
 $bodyFont: "Raleway", sans-serif;
 $landingText: #102542;
 $resultText: #f9dec9;
 $resultButtonShaddow: #ddbda4;
 
+// MIXINS
 @mixin selectBackground($image) {
     background: url(../assets/downIcon.png), $image, #c9f1ff;
     background-size: 25px;
@@ -56,12 +58,13 @@ $resultButtonShaddow: #ddbda4;
     color: $color;
 }
 
-section {
-    height: 100vh;
-}
-
+// GENERAL STYLES
 html {
     font-size: 125%;
+}
+
+section {
+    height: 100vh;
 }
 
 section.result {
