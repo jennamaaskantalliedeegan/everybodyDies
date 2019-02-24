@@ -1,3 +1,4 @@
+// TEXT
 h1 {
     @include heading($landingText);
     margin-top: 0;
@@ -8,6 +9,7 @@ p {
     color: $landingText;
 }
 
+// GENERAL SECTION STYLES
 .flower {
     position: relative;
 }
@@ -38,7 +40,7 @@ p {
     background-size: cover;
     background-position: center bottom;
     overflow: hidden;
-    min-height: 750px;
+    min-height: 700px;
 }
 
 .info {
@@ -53,6 +55,7 @@ p {
     margin: 50px auto 0;
 }
 
+// FORM STYLES
 form {
     display: flex;
     flex-direction: column;
@@ -149,6 +152,7 @@ label, input {
     color: $landingText;
 }
 
+// MEDIA QUERIES
 @media (max-width: 1180px) {
     .landingContent {
         width: 90%
@@ -261,4 +265,3 @@ label, input {
         }
     }
 }
-

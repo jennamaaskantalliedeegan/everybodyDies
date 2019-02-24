@@ -145,11 +145,11 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   clip: rect(0 0 0);
   overflow: hidden; }
 
-section {
-  height: 100vh; }
-
 html {
   font-size: 125%; }
+
+section {
+  height: 100vh; }
 
 section.result {
   display: none; }
@@ -192,7 +192,7 @@ p {
   background-size: cover;
   background-position: center bottom;
   overflow: hidden;
-  min-height: 750px; }
+  min-height: 700px; }
 
 .info {
   width: 40%; }
@@ -454,12 +454,11 @@ h2 {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  min-height: 750px; }
+  min-height: 700px; }
   .result p {
     font-family: "Raleway", sans-serif; }
 
 .result .wrapper {
-  border: 1px solid red;
   width: 80%;
   margin: 0 auto;
   display: -webkit-box;
@@ -498,8 +497,7 @@ ul p:nth-of-type(1) {
   margin: 50px 0 0;
   font-family: "Raleway", sans-serif;
   font-weight: 700;
-  width: 156px;
-  border: 1px solid green; }
+  width: 156px; }
 
 ul p:nth-of-type(2) {
   margin-top: 0;
@@ -524,9 +522,13 @@ button {
     top: 2px;
     -webkit-box-shadow: 0 4px #ddbda4;
     box-shadow: 0 4px #ddbda4; }
+  button:focus {
+    border: 3px solid #00aa55;
+    border-radius: 50px; }
 
 footer p {
-  margin: 0px 30px 5px; }
+  width: 90%;
+  margin: 0px auto 5px; }
   footer p a {
     color: #f9dec9; }
   footer p img {
@@ -534,17 +536,51 @@ footer p {
     display: inline-block; }
 
 @media (max-width: 1180px) {
+  .result .wrapper {
+    width: 90%; }
   h2 {
     font-size: 4.5rem; }
   ul p:nth-of-type(1) {
     font-size: 5rem;
     width: 120px; } }
 
-@media (max-width: 910px) {
+@media (max-width: 850px) {
   h2 {
-    font-size: 3.5rem; }
+    font-size: 4rem;
+    margin-top: 100px; }
   ul p:nth-of-type(1) {
-    font-size: 3rem;
-    width: 80px; }
+    font-size: 4rem;
+    width: 100px; }
   footer p {
     font-size: 0.8rem; } }
+
+@media (max-width: 690px) {
+  .result {
+    min-height: 1400px; }
+  ul {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center; }
+  h2 {
+    font-size: 3.5rem;
+    margin-top: 100px; }
+  ul p:nth-of-type(1) {
+    margin: 0 0 0;
+    font-size: 4.5rem;
+    width: 130px; } }
+
+@media (max-width: 690px) {
+  h2 {
+    font-size: 3rem; } }
+
+@media (max-width: 528px) {
+  h2 {
+    font-size: 2.5rem; } }
+
+@media (max-width: 428px) {
+  ul {
+    margin: 0 0; } }
