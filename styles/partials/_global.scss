@@ -5,14 +5,14 @@ $resultText: #f9dec9;
 $resultButtonShaddow: #ddbda4;
 
 @mixin selectBackground($image) {
-    background: url(../assets/downIcon.png), $image, rgb(160, 217, 236);;
+    background: url(../assets/downIcon.png), $image, #c9f1ff;
     background-size: 25px;
     background-repeat: no-repeat;
     background-position: 95% center, 3% center;
 }
 
 @mixin dateBackground($image) {
-    background: $image;
+    background: $image, #c9f1ff;
     background-size: 25px;
     background-repeat: no-repeat;
     background-position: 3% center;
@@ -29,6 +29,7 @@ $resultButtonShaddow: #ddbda4;
     position: relative;
     font-size: $fontSize;
     transition: top .5s;
+    text-align: center;
 }
 
 @mixin buttonHover ($color) {

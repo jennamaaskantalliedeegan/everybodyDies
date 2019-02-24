@@ -174,9 +174,18 @@ p {
 
 .speechBubble {
   position: absolute;
-  top: -60px;
+  top: -80px;
   right: -70px;
   width: 200px; }
+
+.flower p:nth-of-type(1) {
+  font-size: 1.5rem;
+  position: absolute;
+  top: -80px;
+  right: -50px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  font-family: "Gloria Hallelujah", cursive; }
 
 .landing {
   background: url(../assets/sky2.png);
@@ -184,13 +193,15 @@ p {
   background-position: center bottom;
   overflow: hidden; }
 
+.info {
+  width: 40%; }
+
 .landingContent {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
   width: 80%;
   max-width: 1100px;
   margin: 50px auto 0; }
@@ -207,25 +218,25 @@ form {
   margin-top: 50px; }
 
 select[name="country"] {
-  background: url(../assets/downIcon.png), url(../assets/countriesBW.png), #a0d9ec;
+  background: url(../assets/downIcon.png), url(../assets/countriesBW.png), #c9f1ff;
   background-size: 25px;
   background-repeat: no-repeat;
   background-position: 95% center, 3% center; }
 
 select[name="country"]:focus, select[name="country"]:hover {
-  background: url(../assets/downIcon.png), url(../assets/countriesColor.png), #a0d9ec;
+  background: url(../assets/downIcon.png), url(../assets/countriesColor.png), #c9f1ff;
   background-size: 25px;
   background-repeat: no-repeat;
   background-position: 95% center, 3% center; }
 
 select[name="gender"] {
-  background: url(../assets/downIcon.png), url(../assets/userBW.png), #a0d9ec;
+  background: url(../assets/downIcon.png), url(../assets/userBW.png), #c9f1ff;
   background-size: 25px;
   background-repeat: no-repeat;
   background-position: 95% center, 3% center; }
 
 select[name="gender"]:focus, select[name="gender"]:hover {
-  background: url(../assets/downIcon.png), url(../assets/userColor.png), #a0d9ec;
+  background: url(../assets/downIcon.png), url(../assets/userColor.png), #c9f1ff;
   background-size: 25px;
   background-repeat: no-repeat;
   background-position: 95% center, 3% center; }
@@ -241,38 +252,56 @@ select, input[type="date"] {
   margin: 5px 0; }
 
 input[type="date"] {
-  background: url(../assets/birthdayBW.png);
+  background: url(../assets/birthdayBW.png), #c9f1ff;
   background-size: 25px;
   background-repeat: no-repeat;
-  background-position: 3% center; }
+  background-position: 3% center;
+  font-weight: 400;
+  margin-bottom: 10px; }
 
 input[type="date"]:focus, input[type="date"]:hover {
-  background: url(../assets/birthdayColor.png);
+  background: url(../assets/birthdayColor.png), #c9f1ff;
   background-size: 25px;
   background-repeat: no-repeat;
   background-position: 3% center; }
 
+input[type="date"]:focus, input[type="submit"]:focus, select:focus {
+  -webkit-box-shadow: 0 0 10px #102542;
+  box-shadow: 0 0 10px #102542; }
+
 input[type="submit"] {
-  background: #d0f3ff;
-  -webkit-box-shadow: 0 6px white;
-  box-shadow: 0 6px white;
+  background: #c9f1ff;
+  -webkit-box-shadow: 0 6px #b1e9fd;
+  box-shadow: 0 6px #b1e9fd;
   padding: 20px 50px;
   border: none;
   font-family: "Raleway", sans-serif;
-  color: black;
+  color: #102542;
   border-radius: 50px;
   position: relative;
   font-size: 1rem;
   -webkit-transition: top .5s;
   -o-transition: top .5s;
-  transition: top .5s; }
+  transition: top .5s;
+  text-align: center; }
   input[type="submit"]:hover {
     top: 2px;
-    -webkit-box-shadow: 0 4px white;
-    box-shadow: 0 4px white; }
+    -webkit-box-shadow: 0 4px #b1e9fd;
+    box-shadow: 0 4px #b1e9fd; }
 
 label, input {
-  margin: 5px 0; }
+  margin: 5px 0;
+  font-weight: 700; }
+
+@media (max-width: 1180px) {
+  .landingContent {
+    width: 90%; } }
+
+@media (max-width: 960px) {
+  .speechBubble {
+    right: -50px; }
+  .flower p:nth-of-type(1) {
+    right: -30px; } }
 
 h2 {
   font-size: 5rem;
@@ -351,7 +380,8 @@ button {
   font-size: 1rem;
   -webkit-transition: top .5s;
   -o-transition: top .5s;
-  transition: top .5s; }
+  transition: top .5s;
+  text-align: center; }
   button:hover {
     top: 2px;
     -webkit-box-shadow: 0 4px #ddbda4;
