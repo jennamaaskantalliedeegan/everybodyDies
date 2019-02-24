@@ -15,7 +15,18 @@ $resultButtonShaddow: #ddbda4;
     background: $image, #c9f1ff;
     background-size: 25px;
     background-repeat: no-repeat;
-    background-position: 3% center;
+    background-position: 7% center;
+}
+
+@mixin formInputStyling($paddingTop, $paddingRight, $paddingBottom, $paddingLeft) {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    border: none;
+    color: $landingText;
+    border-radius: 30px;
+    padding: $paddingTop $paddingRight $paddingBottom $paddingLeft;
+    font-weight: 400;
 }
 
 @mixin buttonStyle($color1, $color2, $color3, $fontSize) {
@@ -54,5 +65,5 @@ html {
 }
 
 section.result {
-    // display: none;
+    display: none;
 }

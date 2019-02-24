@@ -14,14 +14,12 @@ app.timeValues = {
 app.eventHandler = () => {
     $("form").on("submit", function (e) {
         e.preventDefault();
-        $(".landing").css("overflow", "visible");
         let gender = $("#gender").val();
         if (gender === "nonBinary" || gender === "unspecified") {
             gender = app.randomGender();
         }
         //Assign form values to varibale
         const country = $("#country").val();
-
         // get todays date and convert into yyyy-mm-dd format
         const today = new Date()
         const todayYear = today.getFullYear();
@@ -34,11 +32,11 @@ app.eventHandler = () => {
             todayDay = "0" + todayDay;
         }
         todayDate = [todayYear, todayMonth, todayDay].join("-");
-
-        const birthday = $("#birthday").val();
-        console.log(birthday);
+        const year = $("#year").val();
+        const month = $("#month").val();
+        const day = $("#day").val();
+        const birthday = [year, month, day].join("-");
         // convert todays date and the birthdate to milliseconds and calculate the difference, which gives us age in milliseconds. Convert age from milliseconds to days.
-        console.log(Date.parse(birthday));
         const age = (Date.parse(todayDate) - Date.parse(birthday)) / (60 * 60 * 24 * 1000);
         // get API results
         clearInterval(app.interval);
@@ -68,7 +66,6 @@ app.randomGender = () => {
     }
 }
 
-
 //make Ajax request using variables
 //extract remaining life expectancy from returned data
 app.getResult = (gender, country, date, age) => {
@@ -78,18 +75,19 @@ app.getResult = (gender, country, date, age) => {
         dataType: "json"
     }).then((data) => {
         if (data.remaining_life_expectancy === undefined) {
-            alert("Sorry we don't have the data for those parameters. Ages over 100 are not supported by this app.");
+            alert("Sorry we don't have the data for those parameters. This app only supports ages 0-100.");
         } else {
             // convert ramaining life expectancy into milliseconds and add it today todays date and time(also converted to milliseconds)
             lifeExpectancyMilliseconds = (data.remaining_life_expectancy) * 365.25 * 24 * 60 * 60 * 1000 + Date.parse(new Date());
             app.startCountDown(lifeExpectancyMilliseconds);
             // show results section and scroll smoothly down the page
+            $(".landing").css("overflow", "visible");
             $("section.result").css("display", "flex");
             app.position = $("section.result").offset().top;
             $("HTML, BODY").animate({ scrollTop: app.position }, 3000);
         }
     }, () => {
-        alert("Sorry we don't have the data for those parameters. Ages over 100 are not supported by this app.");
+            alert("Sorry we don't have the data for those parameters. This app only supports ages 0-100.");
     });
 };
 
@@ -109,11 +107,9 @@ app.getCountDownValues = (lifeExpectancy) => {
 app.startCountDown = (lifeExpectancy) => {
     // show initial remaining life expectancy
     app.getCountDownValues(lifeExpectancy);
-    
     if (app.timeValues.second >=5){
         app.timeValues.second = app.timeValues.second - 5;
         app.displayNumbers();
-    
         //start countdown after 5 seconds, and reprint minutes, hours, days, months, and years every second
         setTimeout(() => {
             app.interval = setInterval(function () {
@@ -137,23 +133,16 @@ app.displayNumbers = () => {
     }
 }
 
-
-
 app.getCountries = () => {
     $.ajax({
         url: "http://api.population.io:80/1.0/countries/",
         method: "GET",
         dataType: "json"
     }).then((data) => {
-        console.log(data.countries);
         app.unfiltered = data.countries;
-
-        console.log(app.unfiltered);
-
         app.filtered = app.unfiltered.filter(function (element) {
             return app.unsupportedRegions.indexOf(element) === -1;
         })
-        console.log(app.filtered);
         app.displayCountries(app.filtered);
     });
 }
@@ -167,12 +156,7 @@ app.displayCountries = (data) => {
     });
 };
 
-
-
-
 app.unsupportedRegions = ["AFRICA", "ASIA", "Australia/New Zealand", "Eastern Africa", "Eastern Asia", "Eastern Europe", "EUROPE", "LATIN AMERICA AND THE CARIBBEAN", "Least developed countries", "Less developed regions", "Less developed regions, excluding China", "Less developed regions, excluding least developed countries", "Middle Africa", "More developed regions", "Northern Africa", "NORTHERN AMERICA", "Northern Europe", "OCEANIA", "Other non-specified areas", "South America", "South-Central Asia", "South-Eastern Asia", "Southern Africa", "Southern Asia", "Southern Europe", "Sub-Saharan Africa", "Western Africa", "Western Asia", "Western Europe"];
-
-
 
 
 //Create app init!
@@ -180,7 +164,6 @@ app.init = () => {
     app.eventHandler();
     app.getCountries();
 };
-
 
 
 //Document Ready
