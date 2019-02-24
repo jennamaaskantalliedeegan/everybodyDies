@@ -4,17 +4,19 @@ h2 {
 }
 
 .result {
-    background: url(../assets/ground2.png);
+    background: url(../assets/ground.png);
     background-size: cover;
     background-position: center top;
     flex-direction: column;
     justify-content: space-between;
+    min-height: 750px;
     p {
         font-family: $bodyFont;
     }
 }
 
 .result .wrapper {
+    border: 1px solid red;
     width: 80%;
     margin: 0 auto;
     display: flex;
@@ -44,6 +46,7 @@ ul p:nth-of-type(1) {
     font-family: $bodyFont;
     font-weight: 700;
     width: 156px;
+    border: 1px solid green;
 }
 
 ul p:nth-of-type(2) {
@@ -59,9 +62,37 @@ button {
 }
 
 footer p {
-    margin-bottom: 5px;
+    margin: 0px 30px 5px;    
     a {
         color: #f9dec9; 
+    }
+    img {
+        width: 20px;
+        display: inline-block;
+    }
+}
+
+
+@media (max-width:1180px) {
+    h2{
+        font-size: 4.5rem;
+    }
+    ul p:nth-of-type(1){
+        font-size: 5rem;
+        width: 120px;
+    }
+}
+
+@media (max-width:850px) {
+    h2 {
+        font-size: 3.5rem;
+    }
+    ul p:nth-of-type(1){
+        font-size: 3rem;
+        width: 80px;
+    }
+    footer p {
+        font-size: 0.8rem;
     }
 }
 

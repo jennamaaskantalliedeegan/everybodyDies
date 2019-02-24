@@ -151,9 +151,6 @@ section {
 html {
   font-size: 125%; }
 
-section.result {
-  display: none; }
-
 h1 {
   font-size: 5rem;
   font-family: "Shrikhand", cursive;
@@ -179,10 +176,11 @@ p {
   width: 200px; }
 
 .landing {
-  background: url(../assets/sky2.png);
+  background: url(../assets/sky.png);
   background-size: cover;
   background-position: center bottom;
-  overflow: hidden; }
+  overflow: hidden;
+  min-height: 750px; }
 
 .landingContent {
   display: -webkit-box;
@@ -283,7 +281,7 @@ h2 {
   z-index: 10; }
 
 .result {
-  background: url(../assets/ground2.png);
+  background: url(../assets/ground.png);
   background-size: cover;
   background-position: center top;
   -webkit-box-orient: vertical;
@@ -292,11 +290,13 @@ h2 {
   flex-direction: column;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
-  justify-content: space-between; }
+  justify-content: space-between;
+  min-height: 750px; }
   .result p {
     font-family: "Raleway", sans-serif; }
 
 .result .wrapper {
+  border: 1px solid red;
   width: 80%;
   margin: 0 auto;
   display: -webkit-box;
@@ -332,7 +332,8 @@ ul p:nth-of-type(1) {
   margin: 50px 0 0;
   font-family: "Raleway", sans-serif;
   font-weight: 700;
-  width: 156px; }
+  width: 156px;
+  border: 1px solid green; }
 
 ul p:nth-of-type(2) {
   margin-top: 0;
@@ -358,6 +359,25 @@ button {
     box-shadow: 0 4px #ddbda4; }
 
 footer p {
-  margin-bottom: 5px; }
+  margin: 0px 30px 5px; }
   footer p a {
     color: #f9dec9; }
+  footer p img {
+    width: 20px;
+    display: inline-block; }
+
+@media (max-width: 1180px) {
+  h2 {
+    font-size: 4.5rem; }
+  ul p:nth-of-type(1) {
+    font-size: 5rem;
+    width: 120px; } }
+
+@media (max-width: 850px) {
+  h2 {
+    font-size: 3.5rem; }
+  ul p:nth-of-type(1) {
+    font-size: 3rem;
+    width: 80px; }
+  footer p {
+    font-size: 0.8rem; } }
