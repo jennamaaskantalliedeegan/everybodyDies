@@ -24,10 +24,11 @@ p {
 }
 
 .landing {
-    background: url(../assets/sky2.png);
+    background: url(../assets/sky.png);
     background-size: cover;
     background-position: center bottom;
     overflow: hidden;
+    min-height: 750px;
 }
 
 .landingContent {
