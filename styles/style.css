@@ -151,6 +151,9 @@ section {
 html {
   font-size: 125%; }
 
+section.result {
+  display: none; }
+
 h1 {
   font-size: 5rem;
   font-family: "Shrikhand", cursive;
@@ -175,7 +178,7 @@ p {
   right: -70px;
   width: 200px; }
 
-.flower p:nth-of-type(1) {
+.flower p {
   font-size: 1.5rem;
   position: absolute;
   top: -80px;
@@ -239,31 +242,83 @@ select[name="gender"]:focus, select[name="gender"]:hover {
   background-repeat: no-repeat;
   background-position: 95% center, 3% center; }
 
-select, input[type="date"] {
+select {
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
   border: none;
   color: #102542;
   border-radius: 30px;
-  padding: 10px 40px;
+  padding: 10px 40px 10px 40px;
+  font-weight: 400;
   margin: 5px 0; }
 
-input[type="date"] {
+fieldset {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+  border: none;
+  padding: 0; }
+
+legend {
+  font-weight: 700;
+  margin: 5px 0; }
+
+input[name="year"] {
   background: url(../assets/birthdayBW.png), #c9f1ff;
   background-size: 25px;
   background-repeat: no-repeat;
-  background-position: 3% center;
+  background-position: 7% center;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  color: #102542;
+  border-radius: 30px;
+  padding: 10px 30px 10px 30px;
   font-weight: 400;
-  margin-bottom: 10px; }
+  margin: 5px 5px 5px 0;
+  width: calc(40% - (20px/3));
+  text-align: center; }
 
-input[type="date"]:focus, input[type="date"]:hover {
+input[name="month"], input[name="day"] {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  color: #102542;
+  border-radius: 30px;
+  padding: 10px 10px 10px 10px;
+  font-weight: 400;
+  background: #c9f1ff;
+  width: calc(30% - (20px/3));
+  text-align: center; }
+
+input[name="month"] {
+  margin: 5px; }
+
+input[name="day"] {
+  margin: 5px 0 5px 5px; }
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0; }
+
+input[type="number"] {
+  -moz-appearance: textfield; }
+
+input[name="year"]:focus, input[name="year"]:hover, input[name="month"]:hover ~ input[name="year"], input[name="month"]:focus ~ input[name="year"], input[name="day"]:hover ~ input[name="year"], input[name="day"]:focus ~ input[name="year"] {
   background: url(../assets/birthdayColor.png), #c9f1ff;
   background-size: 25px;
   background-repeat: no-repeat;
-  background-position: 3% center; }
+  background-position: 7% center; }
 
-input[type="date"]:focus, input[type="submit"]:focus, select:focus {
+input[type="number"]:focus, input[type="submit"]:focus, select:focus {
   -webkit-box-shadow: 0 0 10px #102542;
   box-shadow: 0 0 10px #102542; }
 
@@ -281,7 +336,9 @@ input[type="submit"] {
   -webkit-transition: top .5s;
   -o-transition: top .5s;
   transition: top .5s;
-  text-align: center; }
+  text-align: center;
+  white-space: normal;
+  margin-top: 20px; }
   input[type="submit"]:hover {
     top: 2px;
     -webkit-box-shadow: 0 4px #b1e9fd;
@@ -289,7 +346,8 @@ input[type="submit"] {
 
 label, input {
   margin: 5px 0;
-  font-weight: 700; }
+  font-weight: 700;
+  color: #102542; }
 
 @media (max-width: 1180px) {
   .landingContent {
@@ -298,8 +356,84 @@ label, input {
 @media (max-width: 960px) {
   .speechBubble {
     right: -50px; }
-  .flower p:nth-of-type(1) {
-    right: -30px; } }
+  .flower p {
+    right: -30px; }
+  h1 {
+    font-size: 4.2rem; } }
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 3.9rem;
+    width: 95%;
+    margin: 0 auto; }
+  .landingContent .flowerGraphic {
+    width: 250px; }
+  .landingContent .info {
+    width: 60%;
+    margin-top: 50px; }
+  .landingContent .speechBubble {
+    right: -180px;
+    top: -60px; }
+  .landingContent .flower p {
+    right: -160px;
+    top: -60px; } }
+
+@media (max-width: 690px) {
+  h1 {
+    padding: 20px 0 80px;
+    line-height: 1; }
+  .landing {
+    min-height: 1400px; }
+  .landingContent {
+    font-size: 1.3rem;
+    margin-top: 80px;
+    width: 80%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center; }
+    .landingContent .flowerGraphic {
+      width: 350px; }
+    .landingContent .info {
+      margin-top: 0;
+      width: 100%; }
+    .landingContent .speechBubble {
+      right: -70px;
+      top: -160px; }
+    .landingContent .flower p {
+      right: -50px;
+      top: -160px; }
+  form {
+    margin-top: 30px;
+    text-align: center; }
+    form label, form input, form select, form legend {
+      margin: 20px 0px; }
+    form legend {
+      width: 100%;
+      text-align: center; }
+    form input[type="number"] {
+      margin-top: 20px;
+      margin-bottom: 20px; } }
+
+@media (max-width: 500px) {
+  h1 {
+    font-size: 2.8rem; }
+  .landingContent {
+    margin-top: 50px;
+    width: 90%; }
+    .landingContent .flowerGraphic {
+      width: 300px; }
+    .landingContent .speechBubble {
+      width: 160px;
+      top: -130px;
+      right: -20px; }
+    .landingContent .flower p {
+      font-size: 1.4rem;
+      right: -10px;
+      top: -130px; } }
 
 h2 {
   font-size: 5rem;
