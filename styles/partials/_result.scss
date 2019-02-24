@@ -35,6 +35,10 @@ ul {
     padding: 0;
 }
 
+li {
+    z-index: 10;
+}
+
 .result p {
     text-align: center;
     color: $resultText;
@@ -83,7 +87,7 @@ footer p {
     }
 }
 
-@media (max-width:850px) {
+@media (max-width:910px) {
     h2 {
         font-size: 3.5rem;
     }
