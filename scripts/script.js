@@ -83,7 +83,7 @@ app.randomGender = () => {
 //extract remaining life expectancy from returned data
 app.getResult = (gender, country, date, age) => {
     $.ajax({
-        url: `https://api.population.io:80/1.0/life-expectancy/remaining/${gender}/${country}/${date}/${age}d/`,
+        url: `http://api.population.io:80/1.0/life-expectancy/remaining/${gender}/${country}/${date}/${age}d/`,
         method: "GET",
         dataType: "json"
     }).then((data) => {
