@@ -48,7 +48,7 @@ app.eventHandler = () => {
         }
         todayDate = [todayYear, todayMonth, todayDay].join("-");
         // convert todays date and the birthdate to milliseconds and calculate the difference, which gives us age in milliseconds and then convert age from milliseconds to days.
-        const age = (Date.parse(todayDate) - Date.parse(birthday)) / (60 * 60 * 24 * 1000);
+        const age = Math.floor((Date.parse(todayDate) - Date.parse(birthday)) / (60 * 60 * 24 * 1000));
         // reset form and clear interval from previous results
         clearInterval(app.interval);
         setTimeout(() => {
