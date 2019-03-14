@@ -60,10 +60,10 @@ app.eventHandler = () => {
     
     // return to landing section and hide result section again
     $button.on("click", function () {
-        $landing.css("overflow", "hidden");
         $form[0].reset();
         $("HTML, BODY").animate({ scrollTop: 0 }, 3000);
         setTimeout(() => {
+            $landing.css("overflow", "hidden");
             $result.hide();
         }, 3000);
     })

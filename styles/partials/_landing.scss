@@ -85,10 +85,14 @@ select {
 }
 
 fieldset {
-    display: flex;
-    flex-direction: row-reverse;
     border: none;
     padding: 0;
+}
+
+.birthdayContainer {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
 }
 
 legend {
@@ -109,6 +113,7 @@ input[name="month"], input[name="day"] {
     background: #c9f1ff;
     width: calc(30% - (20px/3));
     text-align: center;
+    width: 25%;
 }
 
 input[name="month"] {
