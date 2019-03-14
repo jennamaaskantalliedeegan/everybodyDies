@@ -1,4 +1,4 @@
-// VARIABLES 
+// VARIABLES
 $headingFont: "Shrikhand", cursive;
 $bodyFont: "Raleway", sans-serif;
 $landingText: #102542;
@@ -7,66 +7,70 @@ $resultButtonShaddow: #ddbda4;
 
 // MIXINS
 @mixin selectBackground($image) {
-    background: url(../assets/downIcon.png), $image, #c9f1ff;
-    background-size: 25px;
-    background-repeat: no-repeat;
-    background-position: 95% center, 3% center;
+  background: url(../assets/downIcon.png), $image, #c9f1ff;
+  background-size: 25px;
+  background-repeat: no-repeat;
+  background-position: 95% center, 3% center;
 }
 
 @mixin dateBackground($image) {
-    background: $image, #c9f1ff;
-    background-size: 25px;
-    background-repeat: no-repeat;
-    background-position: 7% center;
+  background: $image, #c9f1ff;
+  background-size: 25px;
+  background-repeat: no-repeat;
+  background-position: 7% center;
 }
 
-@mixin formInputStyling($paddingTop, $paddingRight, $paddingBottom, $paddingLeft) {
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    appearance: none;
-    border: none;
-    color: $landingText;
-    border-radius: 30px;
-    padding: $paddingTop $paddingRight $paddingBottom $paddingLeft;
-    font-weight: 400;
+@mixin formInputStyling(
+  $paddingTop,
+  $paddingRight,
+  $paddingBottom,
+  $paddingLeft
+) {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  color: $landingText;
+  border-radius: 30px;
+  padding: $paddingTop $paddingRight $paddingBottom $paddingLeft;
+  font-weight: 400;
 }
 
 @mixin buttonStyle($color1, $color2, $color3, $fontSize) {
-    background: $color1;
-    box-shadow: 0 6px $color2; 
-    padding: 20px 50px;
-    border: none;
-    font-family: $bodyFont;
-    color: $color3;
-    border-radius: 50px;
-    position: relative;
-    font-size: $fontSize;
-    transition: top .5s;
-    text-align: center;
+  background: $color1;
+  box-shadow: 0 6px $color2;
+  padding: 20px 50px;
+  border: none;
+  font-family: $bodyFont;
+  color: $color3;
+  border-radius: 50px;
+  position: relative;
+  font-size: $fontSize;
+  transition: top 0.5s;
+  text-align: center;
 }
 
-@mixin buttonHover ($color) {
-    top: 2px;
-    box-shadow: 0 4px $color;
+@mixin buttonHover($color) {
+  top: 2px;
+  box-shadow: 0 4px $color;
 }
 
-@mixin heading ($color) {
-    font-size: 5rem;
-    font-family: $headingFont;
-    text-align: center;
-    margin-bottom: 0;
-    color: $color;
+@mixin heading($color) {
+  font-size: 5rem;
+  font-family: $headingFont;
+  text-align: center;
+  margin-bottom: 0;
+  color: $color;
 }
 
 // GENERAL STYLES
 html {
-    font-size: 125%;
+  font-size: 125%;
 }
 
 section {
-    height: 100vh;
-}
-
-section.result {
+  height: 100vh;
+  .result {
     display: none;
+  }
 }

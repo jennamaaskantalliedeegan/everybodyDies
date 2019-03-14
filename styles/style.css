@@ -150,9 +150,8 @@ html {
 
 section {
   height: 100vh; }
-
-section.result {
-  display: none; }
+  section .result {
+    display: none; }
 
 h1 {
   font-size: 5rem;
@@ -168,6 +167,14 @@ p {
 
 .flower {
   position: relative; }
+  .flower p {
+    font-size: 1.5rem;
+    position: absolute;
+    top: -80px;
+    right: -50px;
+    font-size: 1.8rem;
+    font-weight: 700;
+    font-family: "Gloria Hallelujah", cursive; }
 
 .flowerGraphic {
   width: 80%; }
@@ -177,15 +184,6 @@ p {
   top: -80px;
   right: -70px;
   width: 200px; }
-
-.flower p {
-  font-size: 1.5rem;
-  position: absolute;
-  top: -80px;
-  right: -50px;
-  font-size: 1.8rem;
-  font-weight: 700;
-  font-family: "Gloria Hallelujah", cursive; }
 
 .landing {
   background: url(../assets/sky.png);
@@ -224,7 +222,8 @@ select[name="country"] {
   background-repeat: no-repeat;
   background-position: 95% center, 3% center; }
 
-select[name="country"]:focus, select[name="country"]:hover {
+select[name="country"]:focus,
+select[name="country"]:hover {
   background: url(../assets/downIcon.png), url(../assets/countriesColor.png), #c9f1ff;
   background-size: 25px;
   background-repeat: no-repeat;
@@ -236,7 +235,8 @@ select[name="gender"] {
   background-repeat: no-repeat;
   background-position: 95% center, 3% center; }
 
-select[name="gender"]:focus, select[name="gender"]:hover {
+select[name="gender"]:focus,
+select[name="gender"]:hover {
   background: url(../assets/downIcon.png), url(../assets/userColor.png), #c9f1ff;
   background-size: 25px;
   background-repeat: no-repeat;
@@ -287,10 +287,11 @@ input[name="year"] {
   padding: 10px 30px 10px 30px;
   font-weight: 400;
   margin: 5px 5px 5px 0;
-  width: calc(40% - (20px/3));
+  width: calc(40% - (20px / 3));
   text-align: center; }
 
-input[name="month"], input[name="day"] {
+input[name="month"],
+input[name="day"] {
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
@@ -300,7 +301,7 @@ input[name="month"], input[name="day"] {
   padding: 10px 10px 10px 10px;
   font-weight: 400;
   background: #c9f1ff;
-  width: calc(30% - (20px/3));
+  width: calc(30% - (20px / 3));
   text-align: center;
   width: 25%; }
 
@@ -318,13 +319,20 @@ input[type="number"]::-webkit-outer-spin-button {
 input[type="number"] {
   -moz-appearance: textfield; }
 
-input[name="year"]:focus, input[name="year"]:hover, input[name="month"]:hover ~ input[name="year"], input[name="month"]:focus ~ input[name="year"], input[name="day"]:hover ~ input[name="year"], input[name="day"]:focus ~ input[name="year"] {
+input[name="year"]:focus,
+input[name="year"]:hover,
+input[name="month"]:hover ~ input[name="year"],
+input[name="month"]:focus ~ input[name="year"],
+input[name="day"]:hover ~ input[name="year"],
+input[name="day"]:focus ~ input[name="year"] {
   background: url(../assets/birthdayColor.png), #c9f1ff;
   background-size: 25px;
   background-repeat: no-repeat;
   background-position: 7% center; }
 
-input[type="number"]:focus, input[type="submit"]:focus, select:focus {
+input[type="number"]:focus,
+input[type="submit"]:focus,
+select:focus {
   -webkit-box-shadow: 0 0 10px #102542;
   box-shadow: 0 0 10px #102542; }
 
@@ -339,9 +347,9 @@ input[type="submit"] {
   border-radius: 50px;
   position: relative;
   font-size: 1rem;
-  -webkit-transition: top .5s;
-  -o-transition: top .5s;
-  transition: top .5s;
+  -webkit-transition: top 0.5s;
+  -o-transition: top 0.5s;
+  transition: top 0.5s;
   text-align: center;
   white-space: normal;
   margin-top: 20px; }
@@ -350,7 +358,8 @@ input[type="submit"] {
     -webkit-box-shadow: 0 4px #b1e9fd;
     box-shadow: 0 4px #b1e9fd; }
 
-label, input {
+label,
+input {
   margin: 5px 0;
   font-weight: 700;
   color: #102542; }
@@ -415,7 +424,10 @@ label, input {
   form {
     margin-top: 30px;
     text-align: center; }
-    form label, form input, form select, form legend {
+    form label,
+    form input,
+    form select,
+    form legend {
       margin: 20px 0px; }
     form legend {
       width: 100%;
@@ -463,20 +475,19 @@ h2 {
   min-height: 700px; }
   .result p {
     font-family: "Raleway", sans-serif; }
-
-.result .wrapper {
-  width: 80%;
-  margin: 0 auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center; }
+  .result .wrapper {
+    width: 80%;
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center; }
 
 .timeLeft {
   width: 100%; }
@@ -520,9 +531,9 @@ button {
   border-radius: 50px;
   position: relative;
   font-size: 1rem;
-  -webkit-transition: top .5s;
-  -o-transition: top .5s;
-  transition: top .5s;
+  -webkit-transition: top 0.5s;
+  -o-transition: top 0.5s;
+  transition: top 0.5s;
   text-align: center; }
   button:hover {
     top: 2px;

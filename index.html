@@ -1,106 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Everybody Dies</title>
-    <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon">
-    <link rel="icon" href="assets/favicon.png" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Raleway:400,700|Shrikhand"
-        rel="stylesheet">
-    <link rel="stylesheet" href="styles/style.css">
-</head>
+    <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon" />
+    <link rel="icon" href="assets/favicon.png" type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Raleway:400,700|Shrikhand"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
 
-<body>
+  <body>
     <main>
-        <!-- Landing section starts -->
-        <section class="landing">
-            <h1>Everybody Dies</h1>
-            <div class="landingContent">
-                <div class="flower">
-                    <picture>
-                        <source media="(max-width: 690px)" srcset="assets/flowerHead.png">
-                        <img class="flowerGraphic" src="assets/flowerSpeckle.png" alt="Flower with green steam, coral petals and a yellow center with a smiley face">
-                    </picture>
-                    <img class="speechBubble" src="assets/speechBubbleNavy.png" alt="Speech bubble coming from flowers mouth.">
-                    <p>Even you!</p> 
+      <!-- Landing section starts -->
+      <section class="landing">
+        <h1>Everybody Dies</h1>
+        <div class="landingContent">
+          <div class="flower">
+            <picture>
+              <source
+                media="(max-width: 690px)"
+                srcset="assets/flowerHead.png"
+              />
+              <img
+                class="flowerGraphic"
+                src="assets/flowerSpeckle.png"
+                alt="Flower with green steam, coral petals and a yellow center with a smiley face"
+              />
+            </picture>
+            <img
+              class="speechBubble"
+              src="assets/speechBubbleNavy.png"
+              alt="Speech bubble coming from flowers mouth."
+            />
+            <p>Even you!</p>
+          </div>
+          <div class="info">
+            <form action="">
+              <label for="gender">How do you identify?</label>
+              <select id="gender" name="gender" required>
+                <option value="female">Female</option>
+                <option value="male">Male</option>
+                <option value="nonBinary">Non-binary</option>
+                <option value="unspecified">Prefer not to say</option>
+              </select>
+              <label for="country">What is your country of origin?</label>
+              <select name="country" id="country" required></select>
+              <fieldset>
+                <legend>Tell me your birthday</legend>
+                <div class="birthdayContainer">
+                  <label for="month" class="visuallyHidden">Day</label>
+                  <label for="month" class="visuallyHidden">Month</label>
+                  <label for="year" class="visuallyHidden">Year</label>
+                  <input
+                    type="number"
+                    id="day"
+                    name="day"
+                    placeholder="dd"
+                    min="1"
+                    max="31"
+                    required
+                  />
+                  <input
+                    type="number"
+                    id="month"
+                    name="month"
+                    placeholder="mm"
+                    min="1"
+                    max="12"
+                    required
+                  />
+                  <input
+                    type="number"
+                    id="year"
+                    name="year"
+                    maxlength="4"
+                    placeholder="yyyy"
+                    min="1918"
+                    max="2019"
+                    required
+                  />
                 </div>
-                <div class="info">
-                    <form action="">
-                        <label for="gender">How do you identify?</label>
-                        <select id="gender" name="gender" required>
-                            <option value="female">Female</option>
-                            <option value="male">Male</option>
-                            <option value="nonBinary">Non-binary</option>
-                            <option value="unspecified">Prefer not to say</option>
-                        </select>
-                        <label for="country">What is your country of origin?</label>
-                        <select name="country" id="country" required></select> 
-                        <fieldset>
-                            <legend>Tell me your birthday</legend>
-                            <div class="birthdayContainer">
-                                <label for="month" class="visuallyHidden">Day</label>
-                                <label for="month" class="visuallyHidden">Month</label>
-                                <label for="year" class="visuallyHidden">Year</label>
-                                <input type="number" id="day" name="day" placeholder="dd" min="1" max="31" required>
-                                <input type="number" id="month" name="month" placeholder="mm" min="1" max="12" required>
-                                <input type="number" id="year" name="year" maxlength="4" placeholder="yyyy" min="1918" max="2019" required>
-                            </div>
-                        </fieldset>
-                        <input type="submit" value="Find out when you're going to die">
-                    </form> 
-                </div> <!-- end of info -->
-            </div> <!-- end of landingContent -->
-        </section> <!-- end of landing -->
-        <!-- result section starts -->
-        <section class="result">
-            <div class="resultContent">
-                <div class="wrapper">
-                    <h2>Life left to live</h2>
-                    <div class="timeLeft">
-                        <ul>
-                            <li>
-                                <p class="year"></p>
-                                <p>Years</p>
-                            </li>
-                            <li>
-                                <p class="month"></p>
-                                <p>Months</p>
-                            </li>
-                            <li>
-                                <p class="day"></p>
-                                <p>Days</p>
-                            </li>
-                            <li>
-                                <p class="hour"></p>
-                                <p>Hours</p>
-                            </li>
-                            <li>
-                                <p class="minute"></p>
-                                <p>Minutes</p>
-                            </li>
-                            <li>
-                                <p class="second"></p>
-                                <p>Seconds</p>
-                            </li>
-                        </ul> 
-                    </div> <!-- end of timeLeft -->
-                    <p>Remember, death is but the next great adventure!</p>
-                    <button>Let's do it again!</button>
-                </div> <!-- end of wrapper -->
-            </div> <!-- end of resultContent -->
-            <footer>
-                <p>Made with <img src="assets/flowerIcon.png" alt="A small icon of a smiling flower with coral petals."> by Jenna Maaskant and Allie Deegan using the <a href="http://api.population.io" target="_blank">World Population API.</a></p>
-            </footer><!-- end of footer -->
-        </section> <!-- end of result section -->
-    </main> <!-- end of main -->
+              </fieldset>
+              <input type="submit" value="Find out when you're going to die" />
+            </form>
+          </div>
+          <!-- end of info -->
+        </div>
+        <!-- end of landingContent -->
+      </section>
+      <!-- end of landing -->
+      <!-- result section starts -->
+      <section class="result">
+        <div class="resultContent">
+          <div class="wrapper">
+            <h2>Life left to live</h2>
+            <div class="timeLeft">
+              <ul>
+                <li>
+                  <p class="year"></p>
+                  <p>Years</p>
+                </li>
+                <li>
+                  <p class="month"></p>
+                  <p>Months</p>
+                </li>
+                <li>
+                  <p class="day"></p>
+                  <p>Days</p>
+                </li>
+                <li>
+                  <p class="hour"></p>
+                  <p>Hours</p>
+                </li>
+                <li>
+                  <p class="minute"></p>
+                  <p>Minutes</p>
+                </li>
+                <li>
+                  <p class="second"></p>
+                  <p>Seconds</p>
+                </li>
+              </ul>
+            </div>
+            <!-- end of timeLeft -->
+            <p>Remember, death is but the next great adventure!</p>
+            <button>Let's do it again!</button>
+          </div>
+          <!-- end of wrapper -->
+        </div>
+        <!-- end of resultContent -->
+        <footer>
+          <p>
+            Made with
+            <img
+              src="assets/flowerIcon.png"
+              alt="A small icon of a smiling flower with coral petals."
+            />
+            by Jenna Maaskant and Allie Deegan using the
+            <a href="http://api.population.io" target="_blank"
+              >World Population API.</a
+            >
+          </p>
+        </footer>
+        <!-- end of footer -->
+      </section>
+      <!-- end of result section -->
+    </main>
+    <!-- end of main -->
 
     <!-- javascript and plugins -->
-    <script src='https://code.jquery.com/jquery-3.2.1.min.js'
-        integrity='sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=' crossorigin='anonymous'></script>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"
+    ></script>
     <script src="scripts/script.js"></script>
-</body>
-
+  </body>
 </html>
