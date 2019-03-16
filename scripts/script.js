@@ -1,3 +1,6 @@
+// const moment = require("moment");
+
+
 //Namespacing our app
 const app = {};
 
@@ -61,25 +64,19 @@ app.eventHandler = () => {
     const country = $country.val();
     // convert birthday values into yyyy-mm-dd
     const year = $year.val();
-    const month = $month.val();
-    const day = $day.val();
+    ("0" + $month.val()).slice(-2);
+    const month = ("0" + $month.val()).slice(-2);
+    const day = ("0" + $day.val()).slice(-2);
     const birthday = [year, month, day].join("-");
     // get todays date and convert into yyyy-mm-dd format
-    const today = new Date();
-    const todayYear = today.getFullYear();
-    const todayMonth = today.getMonth() + 1;
-    const todayDay = today.getDate();
-    if (todayMonth.length < 2) {
-      todayMonth = "0" + todayMonth;
-    }
-    if (todayDay.length < 2) {
-      todayDay = "0" + todayDay;
-    }
-    todayDate = [todayYear, todayMonth, todayDay].join("-");
-    // convert todays date and the birthdate to milliseconds and calculate the difference, which gives us age in milliseconds and then convert age from milliseconds to days.
+    const todayDate = moment().format("YYYY-MM-DD");
+    //get todays date and convert it to milliseconds
+    const nowMilliseconds = moment().valueOf();
+    // convert the birthdate to milliseconds and subtract it from the current date in milliseconds, which gives us age in milliseconds and then convert age from milliseconds to days.
     const age = Math.floor(
-      (Date.parse(todayDate) - Date.parse(birthday)) / (60 * 60 * 24 * 1000)
-    );
+      (nowMilliseconds - moment(birthday).valueOf()) / (60 * 60 * 24 * 1000)
+      );
+    const test = moment(birthday).valueOf(); 
     // reset form and clear interval from previous results
     clearInterval(app.interval);
     setTimeout(() => {
@@ -127,7 +124,7 @@ app.getResult = (gender, country, date, age) => {
         // convert remaining life expectancy into milliseconds and add it today todays date and time (also converted to milliseconds)
         lifeExpectancyMilliseconds =
           data.remaining_life_expectancy * 365.25 * 24 * 60 * 60 * 1000 +
-          Date.parse(new Date());
+          moment().valueOf();
         app.startCountDown(lifeExpectancyMilliseconds);
         // show results section and scroll smoothly down the page
         $landing.css("overflow", "visible");
@@ -169,7 +166,7 @@ app.startCountDown = lifeExpectancy => {
 // calculate countdown values
 app.getCountDownValues = lifeExpectancy => {
   // find the difference between life expectancy in milliseconds and the instant date and time converted to milliseconds (this value will change by a second everytime the function is called)
-  difference = lifeExpectancy - Date.parse(new Date());
+  difference = lifeExpectancy - moment().valueOf();
   // convert this difference into seconds, minutes, hours, days, months, and years
   app.timeValues.second = Math.floor((difference / 1000) % 60);
   app.timeValues.minute = Math.floor((difference / 1000 / 60) % 60);

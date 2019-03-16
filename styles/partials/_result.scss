@@ -12,6 +12,7 @@ h2 {
   flex-direction: column;
   justify-content: space-between;
   min-height: 700px;
+  display: none;
   p {
     font-family: $bodyFont;
   }
