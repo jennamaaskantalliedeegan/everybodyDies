@@ -472,7 +472,8 @@ h2 {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  min-height: 700px; }
+  min-height: 700px;
+  display: none; }
   .result p {
     font-family: "Raleway", sans-serif; }
   .result .wrapper {
