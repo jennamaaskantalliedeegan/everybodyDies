@@ -110,11 +110,11 @@ app.randomGender = () => {
   }
 };
 
-//make Ajax request using variables
-//extract remaining life expectancy from returned data
+// make Ajax request using variables
+// extract remaining life expectancy from returned data
 app.getResult = (gender, country, date, age) => {
   $.ajax({
-    url: `http://api.population.io:80/1.0/life-expectancy/remaining/${gender}/${country}/${date}/${age}d/`,
+    url: `https://dyicn1e62j3n1.cloudfront.net/1.0/life-expectancy/remaining/${gender}/${country}/${date}/${age}d/`,
     method: "GET",
     dataType: "json"
   }).then(
@@ -193,7 +193,7 @@ app.displayNumbers = () => {
 // get all countries supported by the popluation app and filter to remove those which don't have data on remaining life expectancy
 app.getCountries = () => {
   $.ajax({
-    url: "http://api.population.io:80/1.0/countries/",
+    url: "https://dyicn1e62j3n1.cloudfront.net/1.0/countries/",
     method: "GET",
     dataType: "json"
   }).then(data => {
